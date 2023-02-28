@@ -10,26 +10,30 @@
 
     <body>
         <div class="wrapper">
-            <div class="z0 hidden" id="moreInfo">
-                <h1>test</h1>
+            <div class="stylizer z0 animateLeft" id="moreInfo">
+                <h2>Bio</h2>
+                <ul>
+                    <li>16 y/o</li>
+                    <li>She/They</li>
+                    <li>Transfem Enby</li>
+                    <li>Bisexual</li>
+                    <li>Obnoxious</li>
+                </ul>
             </div>
+            
             <div class="stylizer z1" id="mainPage">
                 <img id="logo" src="images/pfp.jpg" alt="Yellow leaves coming in from the right side with a light blue, almost white, sky.">
                 <h1 id="name">MAPLE</h1>
                 <p>coding :)</p>
-                <button id="pageButton" onclick="">Continue</button>
-                <div class="buttons">
-                    <a href="#">didn't tech</a>
-                    <a href="#">should've teched</a>
-                </div>
             </div>
             
-            <div class="z0 hidden" id="moreInfo">
-                <h1>test</h1>
+            <div class="stylizer z0 animateRight" id="moreInfo">
+                <h2>Certifications</h2>
             </div>
-            
+            <button id="pageButton" onclick="changeCard()">Continue</button>
         </div>
         
         <noscript>Please enable JavaScript</noscript>
+        <script src="mobilePage.js"></script>
     </body>
 </html>
