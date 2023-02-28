@@ -1,0 +1,92 @@
+:root{
+    --background-filter: #e7470244;
+}
+
+html{
+    height: 100vmin;
+    background-image: linear-gradient(to top, var(--background-filter), var(--background-filter)), url("images/bg.jpg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    width: 45vmin;
+    margin: 0 auto;
+    border-style: none;
+    height: 2em;
+}
+
+hr:first-of-type{
+    background-image: linear-gradient(to top, #b35f1ba3, #f78a31a3 40%);
+    border-radius: 1em 1em 0 0;
+}
+
+hr:last-of-type{
+    background-image: linear-gradient(to bottom, #b35f1ba3, #f78a31a3 40%);
+    border-radius: 0 0 1em 1em;
+}
+
+li{
+    list-style-type: none;
+}
+
+button{
+    border-radius: 10em;
+    margin: 0.5em 0;
+    width: 100%;
+    height: 3em;
+}
+
+.wrapper{
+    font-family: 'Poiret One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    top: 50%;
+    width: 100vw;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.stylizer{
+    margin: auto;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #f78a31a3;
+    text-align: center;
+    width: 50vmin;
+}
+
+.buttons{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1em;
+}
+
+.buttons a{
+    font-family: 'Poiret One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background-color: #f35a18a2;
+    border-radius: 10em;
+    margin: 0.5em 0;
+    padding: 0.2rem;
+}
+
+.hidden{
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+#logo{
+    border-radius: 100em;
+    height: auto;
+    width: clamp(5em, 100vw, 10em);
+}
