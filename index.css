@@ -72,6 +72,7 @@ body{
     padding: 0.5em;
     min-height: calc(50vmin - 50px);
     background-color: #e27923;
+    font-size: 1.25em;
 }
 .z0:first-of-type{transform: translate(calc(25vw - 50%), 5%) rotate(-10deg); text-align: left;}
 .z0:last-of-type{transform: translate(calc(-25vw + 50%), 5%) rotate(10deg); text-align: right;}
@@ -87,6 +88,7 @@ body{
 .z0 ul{padding: 0 1em; list-style-type: none;}
 .z0 h2{text-align: center;}
 
+.z0 a{color: white;}
 
 @media only screen and (max-width: 800px){
     .wrapper{

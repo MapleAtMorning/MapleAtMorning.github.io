@@ -1,14 +1,32 @@
 let cards = document.getElementsByClassName("stylizer");
 let cardnum = 1;
 
+window.onresize = windowCheck;
+
 function changeCard(){
-    console.log(cardnum)
     cards[cardnum].classList.replace("z1", "z0")
     if (cardnum >= 2){
         cardnum = 0;
+    }else{
+        cardnum++;
     };
-    cardnum++;
     cards[cardnum].classList.replace("z0", "z1");
 };
 
-// Didn't have time to test. Please test.
+function windowCheck(){
+    // for(let i = 0; i <= cards.length; i++){
+    //     console.log("Test")
+
+    // };
+    if(window.innerWidth < 800 && cards[0].classList.contains("animateLeft") || window.innerWidth < 800 && cards[2].classList.contains("animateRight")){
+        console.log("removed")
+        cards[0].classList.remove("animateLeft");
+        cards[2].classList.remove("animateRight");
+    }else if(window.innerWidth >= 800 && !cards[0].classList.contains("animateLeft") || window.innerWidth >= 800 && !cards[2].classList.contains("animateRight")){
+        console.log("added")
+        cards[0].classList.add("animateLeft");
+        cards[2].classList.add("animateRight");
+    }else{
+        return;
+    };
+};
