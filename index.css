@@ -81,14 +81,12 @@ body{
     animation-duration: 3s;
 }
 .z0 li::before{
-    content: "•";
     content: "🧡";
-
 }
 .z0 ul{padding: 0 1em; list-style-type: none;}
 .z0 h2{text-align: center;}
 
-.z0 a{color: white;}
+.z0 a{color: white; font-size: 1.1em;}
 
 @media only screen and (max-width: 800px){
     .wrapper{
