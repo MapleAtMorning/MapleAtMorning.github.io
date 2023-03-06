@@ -26,3 +26,6 @@ function windowCheck () {
     return
   };
 };
+windowCheck()
+
+document.getElementById('pageButton').addEventListener('click', changeCard)

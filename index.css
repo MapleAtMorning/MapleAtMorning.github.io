@@ -92,15 +92,22 @@ body {
   animation-duration: 3s;
 }
 
-.z0 a:hover {
+.stylizer a {
+  color: white;
+  font-size: 1.1em;
+  transition: letter-spacing 0.3s ease;
+  padding: 0 1em;
+}
+
+.stylizer a:hover {
   letter-spacing: 0.1rem;
 }
 
-.z0 li::before {
+.stylizer li::before {
   content: "🧡";
 }
 
-.z0 ul {
+.stylizer ul {
   padding: 0 1em;
   list-style-type: none;
 }
@@ -109,10 +116,6 @@ body {
   text-align: center;
 }
 
-.z0 a {
-  color: white;
-  font-size: 1.1em;
-}
 
 @media only screen and (max-width: 800px) {
   .wrapper {
@@ -122,6 +125,38 @@ body {
   .z0 {
     transform: translate(0, 0);
     display: none;
+  }
+
+  .z1{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+  }
+
+  .z1 h2{
+    margin: 0.25em;
+    top: 0;
+    position: absolute;
+    align-self: center;
+    font-size: clamp(1.25em, 10vw, 2.5em);
+  }
+
+  .z1 li, .z1 a{
+    font-size: clamp(1em, 5vw, 1.5em);
+    padding: 0.25rem 0;
+  }
+
+  .z1 ul{
+    margin-top: 4em;
+  }
+
+  h1{
+    margin: 0;
+  }
+
+  #logo{
+    margin: 0 auto 1em;
+    width: clamp(5em, 30vw, 12.5em);
   }
 
   #pageButton {
