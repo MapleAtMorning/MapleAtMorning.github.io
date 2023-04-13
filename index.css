@@ -1,5 +1,6 @@
 :root {
   --background-filter: #e7470244;
+  --easing-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 html {
@@ -16,6 +17,36 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+#mainPage{
+  position: relative;
+}
+
+#mainPage div{
+  list-style-type: none;
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#mainPage div img{
+  height: auto;
+}
+
+#mainPage div a{
+  height: 48px;
+  width: 48px;
+  padding: 0 1em;
+  transition: transform 0.45s var(--easing-out-cubic);
+}
+
+#mainPage div a:focus-visible, #mainPage div a:hover{
+  transform: scale(125%);
+  
 }
 
 #pageButton {
@@ -95,7 +126,7 @@ body {
 .stylizer a {
   color: white;
   font-size: 1.1em;
-  transition: letter-spacing 0.3s ease;
+  transition: letter-spacing 0.45s var(--easing-out-cubic);
   padding: 0.25em 1em;
   display: block;
 }
@@ -104,7 +135,7 @@ body {
   letter-spacing: 0.1rem;
 }
 
-.stylizer li::before {
+.stylizer:not(#mainPage) li::before {
   content: "🧡";
 }
 
