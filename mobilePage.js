@@ -25,6 +25,13 @@ function windowCheck () {
   } else {
     return
   };
+
+  if(window.innerWidth > 800 && Array.from(cards[1].classList).includes("z0")){
+    cards[0].classList.replace('z1', 'z0')
+    cards[1].classList.replace('z0', 'z1')
+    cards[2].classList.replace('z1', 'z0')
+  }
+
 };
 windowCheck()
 
