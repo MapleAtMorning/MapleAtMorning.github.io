@@ -108,13 +108,24 @@ body {
 }
 
 #socials .content{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 48px);
 }
 
-#socials{
-  min-width: 250px;
+#socials a{
+  margin: 0 auto;
+  padding: 12px;
+  max-width: 100%;
+  text-align: center;
+}
+
+#socials img{
+  height: 75%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 iframe{
@@ -143,7 +154,7 @@ win-main p, win-main h1{
 }
 
 
-win-nav{
+win-nav, win-nav-min{
   background-image: linear-gradient(to left, #1085D2, #00007B);
   display: block;
   height: 36px;
@@ -176,6 +187,10 @@ win-nav img{
   image-rendering: pixelated;
 }
 
+win-nav-min + .drag{
+  background-color: red;
+}
+
 .open{
   opacity: 1;
   pointer-events: all;
@@ -201,6 +216,8 @@ win-nav img{
 .content{
   overflow: auto;
   height: calc(100% - 44px);
+  display: flex;
+  gap: 8px;
 }
 
 /* DESKTOP ICONS ####################################################################################################### */
@@ -247,16 +264,20 @@ desktop-icon > img{
 /* BUTTONS ################################################################################################################## */
 
 
-button{
+button, a{
   border: none;
   text-shadow: 0 0 var(--text-color);
   background: var(--surface);
   box-shadow: var(--border-raised-outer), var(--border-raised-inner);
 
-  padding: 0;
+  padding: 0 12px;
+  line-height: 28px;
   display: block;
   min-width: 28px;
-  min-height: 28px;
+  width: fit-content;
+  height: 28px;
+  color: black;
+  text-decoration: none;
 
   cursor: var(--win98-pointer);
 }
@@ -265,13 +286,13 @@ button{
   z-index: 50;
 }
 
-button:focus{
+button:focus, a:focus{
   outline: 1px dotted #000000;
   outline-offset: -4px;
   border-radius: 0;
 }
 
-button:active{
+button:active, a:active{
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
   text-shadow: 1px 1px var(--text-color);
 }
