@@ -33,10 +33,27 @@
   --win98-pointer: url(windows/cursors/pointer.png), auto;
 }
 
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/ms_sans_serif.woff") format("woff");
+  src: url("fonts/ms_sans_serif.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/converted/ms_sans_serif_bold.woff") format("woff");
+  src: url("fonts/converted/ms_sans_serif_bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
 html {
-  font-family: "W95FA", sans-serif;
+  font-family: "W95FA", "Pixelated MS Sans Serif", monospace;
   background-color: #008083;
   cursor: var(--win98-cursor);
+  overflow: hidden;
 }
 
 body {
@@ -81,9 +98,28 @@ body {
   height: auto;
   width: clamp(25px, 20vw, 125px);
   border: 1px black solid;
-  margin-left: 1em;
+  margin: 0 8px 8px 16px;
   float: left;
   image-rendering: pixelated;
+}
+
+#about ul{
+  list-style: none;
+}
+
+#socials span{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+#socials{
+  min-width: 250px;
+}
+
+iframe{
+  width: 100%;
+  height: 95%;
 }
 
 /* WINDOW PRESET ####################################################################################################### */
@@ -101,6 +137,7 @@ win-main{
 
 win-main p, win-main h1{
   margin: 0;
+  font-weight: 400;
 }
 
 
@@ -148,13 +185,23 @@ win-nav img{
   left: 0;
 }
 
+.drag{
+  height: 32px; 
+  width: 32px;
+  position: absolute; 
+  bottom: 4px; 
+  right: 4px; 
+  background-color: green; 
+  cursor: se-resize;
+}
+
 /* DESKTOP ICONS ####################################################################################################### */
 
 main{
   display: flex;
   padding-left: 15px;
   flex-direction: column;
-  font-size: 16pt;
+  font-size: 13pt;
 }
 
 desktop-icon{
