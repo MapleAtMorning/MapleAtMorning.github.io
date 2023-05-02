@@ -2,11 +2,6 @@ let windows = document.querySelectorAll("win-main")
 let desktop = document.getElementsByTagName("desktop-icon")
 let currentFocus = document.querySelector("win-main")
 
-windows.forEach(element => {
-    dragElement(element);
-    resize(element);
-})
-
 
 // Code to open windows on desktop icon click #############################################################################################
 document.querySelectorAll("desktop-icon").forEach(element => {
@@ -58,10 +53,16 @@ document.querySelectorAll("button[aria-label='maximize']").forEach(element => {
     })
 });
 
+windows.forEach(element => {
+    dragElement(element);
+    resize(element);
+    element.style.top = element.offsetTop + "px"
+    element.style.left = element.offsetLeft + "px"
+})
+
 function changeFocus(to){
 
     if(to === currentFocus){return}
-    console.log(to)
     to.style.zIndex = parseInt(to.style.zIndex) + 10
     currentFocus.style.zIndex = parseInt(currentFocus.style.zIndex) - 10
     currentFocus = to
@@ -80,7 +81,8 @@ function dragElement(elmnt) {
 
     function dragMouseDown(e) {
         e = e || window.event;
-        if (elmnt.classList.contains('max')) { return }
+        console.log(e.target.tagName)
+        if (elmnt.classList.contains('max') || e.target.tagName === "BUTTON") { return }
         e.preventDefault();
         // get the mouse cursor position at startup:
         pos3 = e.clientX;
@@ -112,7 +114,7 @@ function dragElement(elmnt) {
 }
 
 function resize(elmnt) {
-    let sca1 = 0, sca2 = 0, sca3 = 0, sca4 = 0;
+    let objX = 0, objY = 0, mouseX = 0, mouseY = 0;
 
     if (elmnt.querySelector("win-nav")) {
         // if present, the header is where you move the DIV from:
@@ -124,8 +126,10 @@ function resize(elmnt) {
         if (elmnt.classList.contains('max')) { return }
         e.preventDefault();
         // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        objX = parseInt(elmnt.style.left);
+        objY = parseInt(elmnt.style.top);
         document.onmouseup = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
@@ -134,15 +138,11 @@ function resize(elmnt) {
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
         // set the element's new position:
-        if((elmnt.offsetTop - pos2) < 0){pos2 = 0}
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        elmnt.style.width = (mouseX - objX) + "px";
+        elmnt.style.height =  (mouseY - objY) + "px";
     }
 
     function closeDragElement() {

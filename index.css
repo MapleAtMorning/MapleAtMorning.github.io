@@ -107,7 +107,7 @@ body {
   list-style: none;
 }
 
-#socials span{
+#socials .content{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
@@ -119,7 +119,7 @@ body {
 
 iframe{
   width: 100%;
-  height: 95%;
+  height: calc(100% - 48px);
 }
 
 /* WINDOW PRESET ####################################################################################################### */
@@ -129,10 +129,12 @@ win-main{
   min-width: 292px;
   min-height: 192px;
   z-index: 10;
-  display: none;
+  display: inline-block;
   box-shadow: var(--border-window-outer), var(--border-window-inner);
   background: var(--surface);
   padding: 6px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 win-main p, win-main h1{
@@ -175,12 +177,13 @@ win-nav img{
 }
 
 .open{
-  display: inline-block;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .max{
-  width: calc(100vw - 12px);
-  height: calc(100vh - 12px);
+  width: calc(100vw - 12px)!important; 
+  height: calc(100vh - 12px)!important;
   top: 0;
   left: 0;
 }
@@ -188,11 +191,16 @@ win-nav img{
 .drag{
   height: 32px; 
   width: 32px;
-  position: absolute; 
+  position: absolute;
   bottom: 4px; 
   right: 4px; 
   background-color: green; 
   cursor: se-resize;
+}
+
+.content{
+  overflow: auto;
+  height: calc(100% - 44px);
 }
 
 /* DESKTOP ICONS ####################################################################################################### */
@@ -251,6 +259,10 @@ button{
   min-height: 28px;
 
   cursor: var(--win98-pointer);
+}
+
+.button-holder{
+  z-index: 50;
 }
 
 button:focus{
