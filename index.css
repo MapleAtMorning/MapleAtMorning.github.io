@@ -1,14 +1,42 @@
 /* https://www.figma.com/file/NcnWpdr72NbgQLjuI7w09z/Windows-98-Design-System-(Community)?node-id=0-1&t=HXamxDP7IUZqNqQF-0 */
 
 :root {
-  --background-filter: #e7470244;
+  /* Many variables, styles, and images taken from 98.css */
+  --text-color: #222222;
+  --surface: #c0c0c0;
+  --button-highlight: #ffffff;
+  --button-face: #dfdfdf;
+  --button-shadow: #808080;
+  --window-frame: #0a0a0a;
+  --dialog-blue: #000080;
+  --dialog-blue-light: #1084d0;
+  --dialog-gray: #808080;
+  --dialog-gray-light: #b5b5b5;
+  --link-blue: #0000ff;
+
+  --border-width: 2px;
+  --border-raised-outer: inset -2px -2px var(--window-frame),
+    inset 2px 2px var(--button-highlight);
+  --border-raised-inner: inset -4px -4px var(--button-shadow),
+    inset 4px 4px var(--button-face);
+  --border-sunken-outer: inset -2px -2px var(--button-highlight),
+    inset 2px 2px var(--window-frame);
+  --border-sunken-inner: inset -4px -4px var(--button-face),
+    inset 4px 4px var(--button-shadow);
+  --border-window-outer: inset -2px -2px var(--window-frame),
+    inset 2px 2px var(--button-face);
+  --border-window-inner: inset -4px -4px var(--button-shadow),
+    inset 4px 4px var(--button-highlight);
+
   --easing-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --win98-cursor: url(windows/cursors/cursor.png), auto;
+  --win98-pointer: url(windows/cursors/pointer.png), auto;
 }
 
 html {
   font-family: "W95FA", sans-serif;
   background-color: #008083;
-  cursor: url(windows/cursors/cursor.png), auto;
+  cursor: var(--win98-cursor);
 }
 
 body {
@@ -16,57 +44,92 @@ body {
   padding: 0;
 }
 
+#noscript{
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  z-index: 1050;
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  background: var(--surface);
+  padding: 6px;
+  position: absolute;
+  min-width: 292px;
+  height: 192px;
+  transform: translate(-50%, -50%);
+  line-height: 192px;
+}
+
+#noscript img{
+  position: relative;
+  transform: translateY(30%);
+}
+
+#noscript + div{
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  background-color: #00000065;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+/* SPECIFIC WINDOWS ####################################################################################################### */
+
 #logo {
   height: auto;
   width: clamp(25px, 20vw, 125px);
   border: 1px black solid;
   margin-left: 1em;
   float: left;
+  image-rendering: pixelated;
 }
-/* SPECIFIC WINDOWS ####################################################################################################### */
-
 
 /* WINDOW PRESET ####################################################################################################### */
 
 win-main{
-  border: 4px solid;
-  border-color: #dbdbdb #000 #000 #dbdbdb;
-  background-color: #bfbfbf;
-  display: inline-block;
   position: absolute;
   min-width: 292px;
   min-height: 192px;
   z-index: 10;
   display: none;
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  background: var(--surface);
+  padding: 6px;
 }
 
 win-main p, win-main h1{
   margin: 0;
 }
 
-win-main::before{
-  content: "";
-  border: 2px solid;
-  border-color: #fff #808080 #808080 #fff;
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;  
-}
 
 win-nav{
-  margin: 2px;
   background-image: linear-gradient(to left, #1085D2, #00007B);
   display: block;
   height: 36px;
   position: relative;
+  margin-bottom: 8px;
 }
 
 win-nav div{
   position: absolute;
+  display: flex;
   right: 4px;
   top: 4px;
+}
+
+win-nav h2{
+  color: #fff;
+  margin: 0;
+  float: left;
+  line-height: 36px;
+  padding-left: 8px;
+  font-weight: 400;
+}
+
+win-nav img[src="windows/buttons/nav-buttons/cross.png"]{
+  cursor: var(--win98-pointer);
 }
 
 win-nav img{
@@ -74,25 +137,50 @@ win-nav img{
   image-rendering: pixelated;
 }
 
+.open{
+  display: inline-block;
+}
+
+.max{
+  width: calc(100vw - 12px);
+  height: calc(100vh - 12px);
+  top: 0;
+  left: 0;
+}
 
 /* DESKTOP ICONS ####################################################################################################### */
 
 main{
   display: flex;
+  padding-left: 15px;
   flex-direction: column;
+  font-size: 16pt;
 }
 
 desktop-icon{
-  width: fit-content;
-  padding: 15px;
+  width: 120px;
+  margin: 5px -20px;
+  padding: 5px;
   display: inline-block;
   text-align: center;
+  cursor: url(windows/cursors/pointer.png), auto;
 }
 
 desktop-icon p{
   margin: 0;
-  padding: 0;
+  padding: 0 7px;
   color: #fff;
+  width: fit-content;
+  margin: auto;
+}
+
+desktop-icon:focus > p{
+  background-color: var(--dialog-blue);
+  outline: 2px dotted #fff;
+}
+
+desktop-icon:focus > img{
+  mix-blend-mode: multiply;
 }
 
 desktop-icon > img{
@@ -100,6 +188,61 @@ desktop-icon > img{
   width: 64px;
   image-rendering: pixelated;
 }
+
+/* BUTTONS ################################################################################################################## */
+
+
+button{
+  border: none;
+  text-shadow: 0 0 var(--text-color);
+  background: var(--surface);
+  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+
+  padding: 0;
+  display: block;
+  min-width: 28px;
+  min-height: 28px;
+
+  cursor: var(--win98-pointer);
+}
+
+button:focus{
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  border-radius: 0;
+}
+
+button:active{
+  box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+  text-shadow: 1px 1px var(--text-color);
+}
+
+win-nav button:focus{
+  outline: none;
+}
+
+win-nav button[aria-label="close"]{
+  background-image: url("./windows/buttons/nav-buttons/close.svg");
+  margin-left: 4px;
+  background-repeat: no-repeat;
+  background-position: top 50% left 50%;
+  background-size: 50%;
+}
+
+win-nav button[aria-label="maximize"]{
+  background-image: url("./windows/buttons/nav-buttons/maximize.svg");
+  background-repeat: no-repeat;
+  background-position: top 50% left 50%;
+  background-size: 50%;
+}
+
+win-nav button[aria-label="minimize"]{
+  background-image: url("./windows/buttons/nav-buttons/minimize.svg");
+  background-repeat: no-repeat;
+  background-position: top 70% left 40%;
+  background-size: 40%;
+}
+
 
 @media only screen and (max-width: 800px) {
 

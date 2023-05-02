@@ -3,30 +3,28 @@
 <head>
     <title>MapleAtMorning</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.cdnfonts.com/css/w95fa" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <script src="windowgenerator.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.cdnfonts.com/css/w95fa" rel="stylesheet">
+
+    <script src="js/custom-html.js"></script>
 </head>
 
 <body>
 
     <main>
-        <desktop-icon data-src="windows/desktop/my-computer.png" data-text="About"></desktop-icon>
-        <desktop-icon data-src="windows/desktop/internet-explorer.png" data-text="Socials"></desktop-icon>
-        <desktop-icon data-src="windows/desktop/network.png" data-text="Socials"></desktop-icon>
-        <desktop-icon data-src="windows/desktop/my-documents.png" data-text="Projects"></desktop-icon>
+        <desktop-icon tabindex="0" data-src="windows/desktop/my-computer.png" data-text="About"></desktop-icon>
+        <desktop-icon tabindex="0" data-src="windows/desktop/internet-explorer.png" data-text="Websites"></desktop-icon>
+        <desktop-icon tabindex="0" data-src="windows/desktop/network.png" data-text="Socials"></desktop-icon>
+        <desktop-icon tabindex="0" data-src="windows/desktop/my-documents.png" data-text="Projects"></desktop-icon>
     </main>
     
     <win-main>
+        <win-nav data-title="about me!! :3"></win-nav>
         <img id="logo" src="images/pfp.jpg" alt="Yellow leaves coming in from the right side with a light blue, almost white, sky.">
         <h1 id="name">MAPLE</h1>
         <p>coding :3</p>
-    </win-main>
-    
-    <win-main id="info">
-        <h2>Bio</h2>
         <ul>
             <li>17 y/o</li>
             <li>She/They</li>
@@ -36,21 +34,27 @@
             <li>Gaymer</li>
         </ul>
     </win-main>
+    
+    <win-main id="info">
+        <win-nav data-title="websites! :o"></win-nav>
+        <a href="https://fries.pics">Fries.Pics</a>
+        <a href="https://gamesunite.dev">Games Unite's Website</a>
+        <a href="https://mapleatmorning.github.io/ninja/">Ninja</a>
+
+    </win-main>
 
     <win-main id="links">
-        <a href="https://github.com/mapleatmorning" tabindex="1"><img src="images/icons/github.svg" alt="Github"></a>
-        <a href="https://steamcommunity.com/id/friespics" tabindex="2"><img src="images/icons/steam.svg" alt="Steam"></a>
-        <a href="https://twitter.com/mapleatmorning" tabindex="3"><img src="images/icons/twitter.svg" alt="Twitter"></a>
-        <a href="https://invite.fries.pics" tabindex="3"><img src="images/icons/discord.svg" alt="Discord"></a>
+        <win-nav data-title="socials &gt;w&lt;"></win-nav>
+        <a href="https://github.com/mapleatmorning"><img src="images/icons/github.svg" alt="Github"></a>
+        <a href="https://steamcommunity.com/id/friespics"><img src="images/icons/steam.svg" alt="Steam"></a>
+        <a href="https://twitter.com/mapleatmorning"><img src="images/icons/twitter.svg" alt="Twitter"></a>
+        <a href="https://invite.fries.pics"><img src="images/icons/discord.svg" alt="Discord"></a>
     </win-main>
     
     <win-main id="projects">
-        <h2>Projects</h2>
-        <a href="https://fries.pics" tabindex="11">Fries.Pics</a>
-        <a href="https://gamesunite.dev" tabindex="12">Games Unite's Website</a>
-        <a href="https://mapleatmorning.github.io/Ascend" tabindex="13">Ascend</a>
-        <a href="https://mapleatmorning.github.io/frontend-frenzy/" tabindex="14">Frontend Frenzy</a>
-        <a href="https://mapleatmorning.github.io/ninja/" tabindex="15">Ninja</a>
+        <win-nav data-title="projects ^w^"></win-nav>
+        <a href="https://mapleatmorning.github.io/Ascend">Ascend</a>
+        <a href="https://mapleatmorning.github.io/frontend-frenzy/">Frontend Frenzy</a>
         <br>
     </win-main>
 
@@ -58,6 +62,12 @@
         <img src="" alt="">
     </footer>
     
-    <noscript>Please enable JavaScript</noscript>
+    <noscript>
+        
+        <p id="noscript"><img src="windows/messages/color-error.png" alt="Error Icon">Please enable JavaScript<img src="windows/messages/color-error.png" alt="Error Icon"></p>
+        <div></div>
+    </noscript>
+
+    <script src="js/window-manager.js"></script>
 </body>
 </html>
