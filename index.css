@@ -95,8 +95,8 @@ body {
 /* SPECIFIC WINDOWS ####################################################################################################### */
 
 #logo {
-  height: auto;
-  width: clamp(25px, 20vw, 125px);
+  height: clamp(25px, 20vw, 125px);
+  width: auto;
   border: 1px black solid;
   margin: 0 8px 8px 16px;
   float: left;
@@ -107,7 +107,7 @@ body {
   list-style: none;
 }
 
-#socials .content{
+#socials .content, #websites .content{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,8 +137,8 @@ iframe{
 
 win-main{
   position: absolute;
-  min-width: 292px;
   min-height: 192px;
+  min-width: fit-content;
   z-index: 10;
   display: inline-block;
   box-shadow: var(--border-window-outer), var(--border-window-inner);
@@ -154,12 +154,21 @@ win-main p, win-main h1{
 }
 
 
-win-nav, win-nav-min{
+win-nav{
   background-image: linear-gradient(to left, #1085D2, #00007B);
   display: block;
+  min-width: 292px;
   height: 36px;
   position: relative;
   margin-bottom: 8px;
+}
+
+win-nav[data-title="mini"]{
+  min-width: 92px;
+}
+
+.drag win-nav[data-title="mini"]{
+  background-color: red;
 }
 
 win-nav div{
