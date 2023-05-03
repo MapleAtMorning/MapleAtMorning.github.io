@@ -138,7 +138,7 @@ iframe{
 
 win-main{
   position: absolute;
-  min-height: 192px;
+  min-height: 80px;
   min-width: fit-content;
   z-index: 10;
   display: inline-block;
@@ -158,7 +158,7 @@ win-main p, win-main h1{
 win-nav{
   background-image: linear-gradient(to left, #1085D2, #00007B);
   display: block;
-  min-width: 292px;
+  min-width: 225px;
   height: 36px;
   position: relative;
   margin-bottom: 8px;
@@ -166,10 +166,6 @@ win-nav{
 
 win-nav[data-title="mini"]{
   min-width: 92px;
-}
-
-.drag win-nav[data-title="mini"]{
-  background-color: red;
 }
 
 win-nav div{
@@ -213,9 +209,12 @@ win-nav img{
   height: 32px; 
   width: 32px;
   position: absolute;
-  bottom: 4px; 
-  right: 4px; 
-  background-color: green; 
+  bottom: 0; 
+  right: 0; 
+  padding: 3px;
+  background-repeat: no-repeat;
+  background-image: url(windows/buttons/nav-buttons/drag.svg);
+  image-rendering: pixelated;
   cursor: se-resize;
 }
 
@@ -269,6 +268,29 @@ desktop-icon > img{
   height: 64px;
   width: 64px;
   image-rendering: pixelated;
+}
+
+/* START BAR ####################################################################################################### */
+
+footer{
+  position: absolute;
+  bottom: 0;
+  background-color: var(--surface);
+  height: 46px;
+  width: 100%;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  box-shadow: -2px -2px var(--button-face), -4px -4px var(--dialog-gray-light);
+}
+
+footer button{
+  font-family: "W95FA", "Pixelated MS Sans Serif", monospace;
+  height: 40px;
+  align-items: center;
+  font-size: 16pt;
+  display: flex;
+  letter-spacing: 2px;
 }
 
 /* BUTTONS ################################################################################################################## */
