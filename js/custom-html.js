@@ -10,7 +10,11 @@ class win_98_win_nav extends HTMLElement{
 
 class win_98_win_main extends HTMLElement{
     connectedCallback() {
-        this.innerHTML = "<div class='drag'></div>"
+        if(this.id === "socials"){
+            this.innerHTML = "<div class='drag hidden'></div>"
+        }else{
+            this.innerHTML = "<div class='drag'></div>"
+        }
     }
 }
 
