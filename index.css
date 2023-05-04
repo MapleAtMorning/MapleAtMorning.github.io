@@ -56,6 +56,10 @@ html {
   overflow: hidden;
 }
 
+img{
+  image-rendering: pixelated;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -100,7 +104,7 @@ body {
   border: 1px black solid;
   margin: 0 8px 8px 16px;
   float: left;
-  image-rendering: pixelated;
+
 }
 
 #about ul{
@@ -190,7 +194,7 @@ win-nav img[src="windows/buttons/nav-buttons/cross.png"]{
 
 win-nav img{
   height: 28px;
-  image-rendering: pixelated;
+
 }
 
 .open{
@@ -267,10 +271,9 @@ desktop-icon:focus > img{
 desktop-icon > img{
   height: 64px;
   width: 64px;
-  image-rendering: pixelated;
 }
 
-/* START BAR ####################################################################################################### */
+/* TASK BAR ####################################################################################################### */
 
 footer{
   position: absolute;
@@ -278,19 +281,43 @@ footer{
   background-color: var(--surface);
   height: 46px;
   width: 100%;
-  padding: 0 4px;
   display: flex;
   align-items: center;
-  box-shadow: -2px -2px var(--button-face), -4px -4px var(--dialog-gray-light);
+  box-shadow: 0px -2px var(--button-face), 0px -4px var(--dialog-gray-light);
 }
 
 footer button{
   font-family: "W95FA", "Pixelated MS Sans Serif", monospace;
   height: 40px;
   align-items: center;
-  font-size: 16pt;
+  font-size: 14pt;
+  margin: 0 4px;
   display: flex;
   letter-spacing: 2px;
+}
+
+footer button img{
+  padding-right: 6px;
+}
+
+footer > div{
+  display: flex;
+}
+
+footer > div::after{
+  content: "";
+  width: 10px;
+  background-image: url(windows/buttons/nav-buttons/tb-divide.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  background-size: 40px;
+}
+
+#task-info{
+  float: right;
+  width: 100px;
+  background-color: red;
 }
 
 /* BUTTONS ################################################################################################################## */
@@ -327,6 +354,10 @@ button:focus, a:focus{
 button:active, a:active{
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
   text-shadow: 1px 1px var(--text-color);
+}
+
+win-nav button{
+  image-rendering: pixelated;
 }
 
 win-nav button:focus{
