@@ -293,7 +293,6 @@ footer button{
   font-size: 14pt;
   margin: 0 4px;
   display: flex;
-  letter-spacing: 2px;
 }
 
 footer button img{
@@ -319,7 +318,8 @@ footer > div::after{
 #task-info{
   position: absolute;
   right: 8px;
-  width: 164px;
+  width: fit-content;
+  line-height: 40px;
   box-shadow: inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
 }
 
@@ -333,6 +333,10 @@ footer > div::after{
   background-repeat: no-repeat;
   image-rendering: pixelated;
   background-size: 40px;
+}
+
+#task-info p{
+  margin: 0;
 }
 
 #task-info::after{
