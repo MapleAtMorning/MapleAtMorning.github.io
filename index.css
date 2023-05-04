@@ -302,6 +302,8 @@ footer button img{
 
 footer > div{
   display: flex;
+  width: fit-content;
+  height: 40px;
 }
 
 footer > div::after{
@@ -315,9 +317,26 @@ footer > div::after{
 }
 
 #task-info{
-  float: right;
-  width: 100px;
-  background-color: red;
+  position: absolute;
+  right: 8px;
+  width: 164px;
+  box-shadow: inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
+}
+
+#task-info::before{
+  content: "";
+  width: 10px;
+  position: relative;
+  transform: translate(-16px);
+  background-image: url(windows/buttons/nav-buttons/tb-divide.png);
+  background-position: 35%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  background-size: 40px;
+}
+
+#task-info::after{
+  background: none;
 }
 
 /* BUTTONS ################################################################################################################## */
@@ -325,7 +344,6 @@ footer > div::after{
 
 button, a{
   border: none;
-  text-shadow: 0 0 var(--text-color);
   background: var(--surface);
   box-shadow: var(--border-raised-outer), var(--border-raised-inner);
 
@@ -353,7 +371,6 @@ button:focus, a:focus{
 
 button:active, a:active{
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
-  text-shadow: 1px 1px var(--text-color);
 }
 
 win-nav button{
