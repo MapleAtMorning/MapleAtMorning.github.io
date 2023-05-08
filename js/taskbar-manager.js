@@ -1,3 +1,4 @@
+const taskbar = document.getElementById("item-holder")
 
 let htmlHours = document.getElementById("hour")
 let htmlMinutes = document.getElementById("minutes")
@@ -28,7 +29,6 @@ function changeTime(){
     
     if(htmlMinutes.innerText != today.getMinutes()){
         if(today.getMinutes() < 10 && htmlMinutes != ("0" + today.getMinutes())){
-            console.log("0" + today.getMinutes())
             htmlMinutes.innerText = "0" + today.getMinutes()
         }else{
             htmlMinutes.innerText = today.getMinutes()
@@ -40,3 +40,12 @@ function changeTime(){
     }, 1000);
 }
 changeTime()
+
+function addItem(src, text){
+    let item = document.createElement("task-item")
+    item.dataset.src = src
+    item.dataset.title = text
+    taskbar.appendChild(item)
+}
+
+addItem("windows/desktop/my-computer.png", "About")
