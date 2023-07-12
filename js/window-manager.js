@@ -1,17 +1,65 @@
-let windows = document.querySelectorAll("win-main")
-let desktop = document.getElementsByTagName("desktop-icon")
+const taskbar = document.getElementById("item-holder")
+const windows = document.querySelectorAll("win-main")
+const desktop = document.getElementsByTagName("desktop-icon")
+
 let currentFocus = document.querySelector("win-main")
 
+function changeFocus(to){
+    if(to === currentFocus){return}
+
+    let i
+    for (i = 0; i < taskbar.children.length; i++){
+        if (taskbar.children[i].dataset.id === to.id){
+            taskbar.children[i].classList.add("active")
+        }else{
+            if (taskbar.children[i].classList.contains("active")){
+                taskbar.children[i].classList.remove("active")
+            }
+        }
+    }
+
+    to.style.zIndex = parseInt(to.style.zIndex) + 10
+    currentFocus.style.zIndex = parseInt(currentFocus.style.zIndex) - 10
+    currentFocus = to
+}
+
+function addItem(src, text, id){
+    let item = document.createElement("task-item")
+    item.dataset.src = src
+    item.dataset.title = text
+    item.dataset.id = id
+    item.classList.add("active")
+    taskbar.appendChild(item)
+
+    item.addEventListener("click", event => {
+        let i
+        for (i = 0; i < windows.length; i++) {
+            if (windows[i].id === item.dataset.id){
+                changeFocus(windows[i])
+            }
+        }
+    })
+}
+
+function removeItem(id){
+    let i
+    for (i = 0; i < taskbar.children.length; i++){
+        if (taskbar.children[i].dataset.id === id){
+            taskbar.children[i].remove()
+        }
+    }
+}
 
 // Code to open windows on desktop icon click #############################################################################################
 document.querySelectorAll("desktop-icon").forEach(element => {
     element.addEventListener("click", event => {
-
+        let i;
         for (i = 0; i < desktop.length; i++) {
             if (desktop[i] === element){
                 changeFocus(windows[i])
                 if(!windows[i].classList.contains("open")) {
                     windows[i].classList.add("open")
+                    addItem(desktop[i].firstChild.src, windows[i].getElementsByTagName("win-nav")[0].dataset.title, windows[i].id)
                 }
             }
         }
@@ -35,6 +83,8 @@ document.querySelectorAll("button[aria-label='close']").forEach(element => {
             if (currwindow.classList.contains("max")) {
                 currwindow.classList.remove("max")
             }
+
+            removeItem(currwindow.id)
         }
     })
 });
@@ -60,14 +110,6 @@ windows.forEach(element => {
     element.style.left = element.offsetLeft + "px"
 })
 
-function changeFocus(to){
-
-    if(to === currentFocus){return}
-    to.style.zIndex = parseInt(to.style.zIndex) + 10
-    currentFocus.style.zIndex = parseInt(currentFocus.style.zIndex) - 10
-    currentFocus = to
-}
-
 
 // i was lazy
 // https://www.w3schools.com/howto/howto_js_draggable.asp
@@ -80,8 +122,7 @@ function dragElement(elmnt) {
     }
 
     function dragMouseDown(e) {
-        e = e || window.event;
-        console.log(e.target.tagName)
+        e = e || window.Event;
         if (elmnt.classList.contains('max') || e.target.tagName === "BUTTON") { return }
         e.preventDefault();
         // get the mouse cursor position at startup:
@@ -93,7 +134,7 @@ function dragElement(elmnt) {
     }
 
     function elementDrag(e) {
-        e = e || window.event;
+        e = e || window.Event;
         e.preventDefault();
         // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
@@ -122,7 +163,7 @@ function resize(elmnt) {
     }
 
     function dragMouseDown(e) {
-        e = e || window.event;
+        e = e || window.Event;
         if (elmnt.classList.contains('max')) { return }
         e.preventDefault();
         // get the mouse cursor position at startup:
@@ -136,7 +177,7 @@ function resize(elmnt) {
     }
 
     function elementDrag(e) {
-        e = e || window.event;
+        e = e || window.Event;
         e.preventDefault();
         mouseX = e.clientX;
         mouseY = e.clientY;

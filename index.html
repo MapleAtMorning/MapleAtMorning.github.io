@@ -50,12 +50,13 @@
     </win-main>
 
     <win-main id="socials" style="top: 2.5%; left: calc(20% - 125px); z-index: 3;">
-        <win-nav data-title="mini"></win-nav>
+        <win-nav data-title="socials >w<"></win-nav>
         <div class="content">
-            <a href="https://github.com/mapleatmorning"><img src="images/icons/github.svg" alt="Github"></a>
-            <a href="https://steamcommunity.com/id/friespics"><img src="images/icons/steam.svg" alt="Steam"></a>
-            <a href="https://twitter.com/mapleatmorning"><img src="images/icons/twitter.svg" alt="Twitter"></a>
-            <a href="https://invite.fries.pics"><img src="images/icons/discord.svg" alt="Discord"></a>
+            <a target="_blank" href="https://github.com/mapleatmorning"><img src="images/icons/github.svg" alt="Github"></a>
+            <a target="_blank" href="https://steamcommunity.com/id/friespics"><img src="images/icons/steam.svg" alt="Steam"></a>
+            <a target="_blank" href="https://twitter.com/mapleatmorning"><img src="images/icons/twitter.svg" alt="Twitter"></a>
+            <a target="_blank" href="https://mapleatmorning.tumblr.com"><img src="images/icons/tumblr.svg" alt="Tumblr"></a>
+            <a target="_blank" href="http://invite.fries.pics"><img src="images/icons/discord.svg" alt="Discord"></a>
         </div>
     </win-main>
     
@@ -69,16 +70,15 @@
 
     <win-main id="paint" style="top: 5%; left: 65%; z-index: 5; height: 80%; width: 30%">
         <win-nav data-title="js paint xD"></win-nav>
-        <iframe id="iframe" src="https://jspaint.app/" frameborder="0"></iframe>
+        <iframe src="https://jspaint.app/" frameborder="0"></iframe>
     </win-main>
 
     <footer>
         <div>
-            <button><img src="windows/windows-0.png" alt=""><p>Start</p></button>
+            <button id="startbtn" href="#"><img src="windows/windows-0.png" alt=""><p>Start</p></button>
         </div>
 
         <div id="item-holder">
-            <task-item data-src="windows/desktop/my-computer.png" data-title="About"></task-item>
         </div>
         
         <div id="task-info">
@@ -91,8 +91,9 @@
         <p id="noscript"><img src="windows/messages/color-error.png" alt="Error Icon">Please enable JavaScript<img src="windows/messages/color-error.png" alt="Error Icon"></p>
         <div></div>
     </noscript>
-
-    <script src="js/window-manager.js"></script>
-    <script src="js/taskbar-manager.js"></script>
+    
+    <script type="module" src="js/time-manager.js"></script>
+    <script type="module" src="js/window-manager.js"></script>
+    <script type="module" src="js/ytrandom.js"></script>
 </body>
 </html>

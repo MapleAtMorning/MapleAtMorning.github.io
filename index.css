@@ -138,6 +138,14 @@ iframe{
   height: calc(100% - 48px);
 }
 
+win-nav[data-title="socials >w<"]{
+  min-width: 92px;
+}
+
+win-nav[data-title="socials >w<"] h2{
+  display: none;
+}
+
 /* WINDOW PRESET ####################################################################################################### */
 
 win-main{
@@ -166,10 +174,6 @@ win-nav{
   height: 36px;
   position: relative;
   margin-bottom: 8px;
-}
-
-win-nav[data-title="mini"]{
-  min-width: 92px;
 }
 
 win-nav div{
@@ -379,7 +383,7 @@ button:focus, a:focus{
   border-radius: 0;
 }
 
-button:active, a:active{
+button:active, a:active, task-item.active button{
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
 }
 

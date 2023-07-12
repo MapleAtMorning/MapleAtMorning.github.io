@@ -1,7 +1,7 @@
 class win_98_win_nav extends HTMLElement{
     connectedCallback() {
-        if(this.dataset.title === "mini"){
-            this.innerHTML = `<div class="button-holder"><button aria-label='close' /></div>`
+        if(this.dataset.title === "socials >w<"){
+            this.innerHTML = `<h2>${this.dataset.title}</h2><div class="button-holder"><button aria-label='close' /></div>`
             return
         }
         this.innerHTML = `
