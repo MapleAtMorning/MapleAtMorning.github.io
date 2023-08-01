@@ -54,6 +54,7 @@ html {
   background-color: #008083;
   cursor: var(--win98-cursor);
   overflow: hidden;
+  user-select: none;
 }
 
 img{
