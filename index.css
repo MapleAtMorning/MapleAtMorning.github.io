@@ -147,6 +147,8 @@ win-nav[data-title="socials >w<"] h2{
 
 /* WINDOW PRESET ####################################################################################################### */
 
+
+
 win-main{
   position: absolute;
   min-height: 80px;
@@ -277,7 +279,7 @@ desktop-icon > img{
 }
 
 @media only screen and (max-width: 500px) {
-  desktop-icon[data-text="Paint"]{
+  desktop-icon[data-text="Paint"], #paint{
     display: none;
   }
 }

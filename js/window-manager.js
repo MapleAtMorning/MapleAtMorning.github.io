@@ -119,6 +119,7 @@ function dragElement(elmnt) {
     if (elmnt.querySelector("win-nav")) {
         // if present, the header is where you move the DIV from:
         elmnt.querySelector("win-nav").onmousedown = dragMouseDown;
+        elmnt.querySelector("win-nav").ontouchstart = dragMouseDown;
     }
 
     function dragMouseDown(e) {
@@ -129,6 +130,7 @@ function dragElement(elmnt) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         document.onmouseup = closeDragElement;
+        document.ontouchend = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
@@ -160,6 +162,7 @@ function resize(elmnt) {
     if (elmnt.querySelector("win-nav")) {
         // if present, the header is where you move the DIV from:
         elmnt.querySelector(".drag").onmousedown = dragMouseDown;
+        elmnt.querySelector(".drag").ontouchstart = dragMouseDown;
     }
 
     function dragMouseDown(e) {
@@ -172,6 +175,7 @@ function resize(elmnt) {
         objX = parseInt(elmnt.style.left);
         objY = parseInt(elmnt.style.top);
         document.onmouseup = closeDragElement;
+        document.ontouchend = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
