@@ -17,7 +17,7 @@ class win_98_win_nav_item extends HTMLElement{
     connectedCallback() {
         this.innerHTML = `
             
-            <button><img src="${this.dataset.src}">${this.dataset.title}</button>`
+            <button><img src="${this.dataset.src}"><p>${this.dataset.title}</p></button>`
     }
 }
 

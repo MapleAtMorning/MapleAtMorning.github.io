@@ -104,7 +104,6 @@ body {
   border: 1px black solid;
   margin: 0 8px 8px 16px;
   float: left;
-
 }
 
 #about ul{
@@ -277,6 +276,12 @@ desktop-icon > img{
   width: 64px;
 }
 
+@media only screen and (max-width: 500px) {
+  desktop-icon[data-text="Paint"]{
+    display: none;
+  }
+}
+
 /* TASK BAR ####################################################################################################### */
 
 footer{
@@ -323,6 +328,7 @@ footer > div:first-of-type::after{
   position: absolute;
   right: 8px;
   width: 5%;
+  min-width: 100px;
   line-height: 40px;
   box-shadow: inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
 }
@@ -353,6 +359,18 @@ task-item img{
   height: 70%;
 }
 
+@media only screen and (max-width: 990px) {
+  task-item p{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 565px) {
+  #item-holder{
+    display: none;
+  }
+}
+
 /* BUTTONS ################################################################################################################## */
 
 
@@ -365,7 +383,7 @@ button, a{
   line-height: 28px;
   display: block;
   min-width: 28px;
-  width: fit-content;
+  width: max-content;
   height: 28px;
   color: black;
   text-decoration: none;
@@ -389,6 +407,7 @@ button:active, a:active, task-item.active button{
 
 win-nav button{
   image-rendering: pixelated;
+  width: fit-content;
 }
 
 win-nav button:focus{
@@ -415,9 +434,4 @@ win-nav button[aria-label="minimize"]{
   background-repeat: no-repeat;
   background-position: top 70% left 40%;
   background-size: 40%;
-}
-
-
-@media only screen and (max-width: 800px) {
-
 }
