@@ -298,7 +298,7 @@ footer{
   box-shadow: 0px -2px var(--button-face), 0px -4px var(--dialog-gray-light);
 }
 
-footer button{
+footer #startbtn{
   font-family: "W95FA", "Pixelated MS Sans Serif", monospace;
   height: 40px;
   align-items: center;
@@ -307,7 +307,7 @@ footer button{
   display: flex;
 }
 
-footer button img{
+footer #startbtn img{
   padding-right: 6px;
 }
 
