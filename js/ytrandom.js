@@ -19,7 +19,7 @@ async function grabRandom(){
     let randomItem = keys[randNum]
     keys.splice(randNum, 1)
     // console.log(`Keys Length: ${keys.length} \nRandom Number: ${randNum}`)
-    document.getElementById('random-link').href = randomItem
+    document.getElementById('startbtn').href = randomItem
 }
 document.getElementById('startbtn').addEventListener("click", grabRandom)
 grabRandom()
