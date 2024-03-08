@@ -2,25 +2,32 @@ const taskbar = document.getElementById("item-holder")
 const windows = document.querySelectorAll("win-main")
 const desktop = document.getElementsByTagName("desktop-icon")
 
-let currentFocus = document.querySelector("win-main")
+let focusPriority = []
 
 function changeFocus(to){
-    if(to === currentFocus){return}
-
-    let i
-    for (i = 0; i < taskbar.children.length; i++){
-        if (taskbar.children[i].dataset.id === to.id){
-            taskbar.children[i].classList.add("active")
-        }else{
-            if (taskbar.children[i].classList.contains("active")){
-                taskbar.children[i].classList.remove("active")
-            }
-        }
+    if(focusPriority[0] === to.id){return}
+    
+    if (focusPriority.indexOf(to.id) !== -1){
+        focusPriority.splice(focusPriority.indexOf(to.id), 1);
     }
+    focusPriority.unshift(to.id)
+    console.log(focusPriority)
 
-    to.style.zIndex = parseInt(to.style.zIndex) + 10
-    currentFocus.style.zIndex = parseInt(currentFocus.style.zIndex) - 10
-    currentFocus = to
+    alignTaskbarAndArray()
+
+}
+
+function alignTaskbarAndArray(){
+    for (let i = 0; i < taskbar.children.length; i++){
+        // Set pressed in style on taskbar for focused window 
+        if (taskbar.children[i].dataset.id === focusPriority[0]){
+            taskbar.children[i].classList.add("active")
+        }else if (taskbar.children[i].classList.contains("active")){
+            taskbar.children[i].classList.remove("active")
+        }
+        // Realign z-indexes
+        document.getElementById(focusPriority[i]).style.zIndex = focusPriority.length - i
+    }
 }
 
 function addItem(src, text, id){
@@ -30,6 +37,7 @@ function addItem(src, text, id){
     item.dataset.id = id
     item.classList.add("active")
     taskbar.appendChild(item)
+
 
     item.addEventListener("click", event => {
         let i
@@ -42,12 +50,23 @@ function addItem(src, text, id){
 }
 
 function removeItem(id){
-    let i
-    for (i = 0; i < taskbar.children.length; i++){
+
+    for (let i = 0; i < taskbar.children.length; i++){
         if (taskbar.children[i].dataset.id === id){
             taskbar.children[i].remove()
+            focusPriority.splice(focusPriority.indexOf(id), 1);
+            console.log(focusPriority) 
+            alignTaskbarAndArray()
         }
     }
+
+
+}
+
+function unMaximize(currwindow){
+    currwindow.classList.remove("max")
+    currwindow.style.left = currwindow.dataset.left
+    currwindow.style.top = currwindow.dataset.top 
 }
 
 // Code to open windows on desktop icon click #############################################################################################
@@ -66,13 +85,14 @@ document.querySelectorAll("desktop-icon").forEach(element => {
     })
 });
 
+// Windows controls #######################################################################################################################
+
 document.querySelectorAll("win-main").forEach(element => {
     element.addEventListener("mousedown", event => {
-
         changeFocus(element)
-
     })
 });
+
 
 document.querySelectorAll("button[aria-label='close']").forEach(element => {
     element.addEventListener("click", event => {
@@ -81,7 +101,7 @@ document.querySelectorAll("button[aria-label='close']").forEach(element => {
         if (currwindow.classList.contains("open")) {
             currwindow.classList.remove("open")
             if (currwindow.classList.contains("max")) {
-                currwindow.classList.remove("max")
+                unMaximize(currwindow)
             }
 
             removeItem(currwindow.id)
@@ -94,12 +114,23 @@ document.querySelectorAll("button[aria-label='maximize']").forEach(element => {
         let currwindow = element.parentElement.parentElement.parentElement
 
         if (!currwindow.classList.contains("max")) {
-            currwindow.classList.add("max")
+            currwindow.dataset.left = currwindow.style.left
+            currwindow.dataset.top = currwindow.style.top
             currwindow.style.left = 0
             currwindow.style.top = 0
+            currwindow.classList.add("max")
         } else {
-            currwindow.classList.remove("max")
+            unMaximize(currwindow)
         }
+    })
+});
+
+document.querySelectorAll("button[aria-label='minimize']").forEach(element => {
+    element.addEventListener("click", event => {
+        let currwindow = element.parentElement.parentElement.parentElement
+
+        unMaximize(currwindow)
+        currwindow.classList.add("minimized")
     })
 });
 

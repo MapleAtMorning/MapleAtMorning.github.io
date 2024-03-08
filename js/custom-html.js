@@ -1,6 +1,6 @@
 class win_98_win_nav extends HTMLElement{
     connectedCallback() {
-        if(this.dataset.title === "socials >w<"){
+        if(this.dataset.title === "socials >w<" || this.dataset.title === "steam"){
             this.innerHTML = `<h2>${this.dataset.title}</h2><div class="button-holder"><button aria-label='close' /></div>`
             return
         }
@@ -23,7 +23,7 @@ class win_98_win_nav_item extends HTMLElement{
 
 class win_98_win_main extends HTMLElement{
     connectedCallback() {
-        if(this.id === "socials"){
+        if(this.id === "socials" || this.id === "steam"){
             this.innerHTML = "<div class='drag hidden'></div>"
         }else{
             this.innerHTML = "<div class='drag'></div>"

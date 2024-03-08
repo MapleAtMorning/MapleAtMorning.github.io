@@ -239,6 +239,67 @@ win-nav img{
   display: none;
 }
 
+/* STEAM SPECIFIC WINDOW ############################################################################################### */
+
+win-main#steam{
+  border: 1px outset #808080;
+  box-shadow: none;
+  background: #4c5844;
+  padding: 0 0 8px 0;
+}
+
+#steam win-nav{
+  background: transparent;
+}
+
+#steam ul{
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+#steam li{
+  list-style-type: ">> ";
+  color: #a0aa95;
+  font-weight: 100;
+}
+
+#steam .content{
+  flex-direction: column;
+  align-items: center;
+}
+
+#steam .banner{
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-image: repeating-linear-gradient(to bottom,#a0aa95,#a0aa95 2px,#ffffff00 2px,#ffffff00 4px);
+  mask-image: linear-gradient(to right, #ffffff00 2%,#ffffff5a, #ffffff00 98%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+#steam .banner + img{
+  filter: invert(1) drop-shadow(10px 10px 10px);
+  position: absolute;
+  top: 18%;
+}
+
+#steam a{
+  color: white;
+  border: 1px solid;
+  border-color: #87907f #2b3125 #2b3125 #87907f;
+  box-shadow: none;
+  background: #4c5844;
+}
+
+#steam win-nav button[aria-label="close"]{
+  background-color: transparent;
+  filter: invert(1);
+  box-shadow: none;
+}
+
 /* DESKTOP ICONS ####################################################################################################### */
 
 main{
