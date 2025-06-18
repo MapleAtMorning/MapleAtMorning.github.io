@@ -1,7 +1,7 @@
 let rawJSON
 let keys
 async function jsonGrab(){
-    const result = await fetch("https://mapleatmorning.github.io/ytrandomjson/ytrandom.json")
+    const result = await fetch("https://mapleatmorning.com/ytrandomjson/ytrandom.json")
     rawJSON = await result.json()
     return rawJSON
 }
